@@ -75,7 +75,7 @@ void usage(void)
 
 int main (int argc, char **argv)
 {
-	register int c;
+	int	c;
 	int	ret;				
 	int	vflag;				
 	struct bunsetu bun[HBUFSIZ];		
@@ -226,8 +226,8 @@ while (count--) {
 
 void rkconvs(unsigned char *yomi, unsigned char *roma)
 {
-	register unsigned char *p, *q, *yp;
-	register int i;
+	unsigned char *p, *q, *yp;
+	int i;
 	int rlen; 			
 	int len;			
 	unsigned char rbuf[16];		
@@ -331,7 +331,7 @@ void str_make(unsigned char *out_str, unsigned char *in_str, int len)
 
 void pr_douon(unsigned char *yomi)
 {
-	register int i;
+	int i;
 	struct douon douon[BUFSIZ];	
 	int douon_cnt;			
 
@@ -377,7 +377,7 @@ void pr_bunsetu(struct bunsetu *now_bun, int bunsetu_cnt)
 
 void pr_kanji(struct bunsetu *bun, int bnum)
 {
-	register int i;
+	int i;
 
 	
 
