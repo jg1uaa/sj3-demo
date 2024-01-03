@@ -143,7 +143,7 @@ while (count--) {
 #endif
 	
 
-	if (ret = sj3_rkinit(RKFILE)) {
+	if ((ret = sj3_rkinit(RKFILE))) {
 		if (ret == 1)
 			fprintf(stderr, "Can't open Romaji Kana Rule file %s\n",
 					 RKFILE);
