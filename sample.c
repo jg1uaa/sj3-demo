@@ -57,6 +57,7 @@
 
 char	*pname;		
 char	*hname;		
+char	*rkfile = RKFILE;
 int	current_locale = LC_CTYPE_EUC;
 
 /* rk_conv.c */
@@ -114,7 +115,7 @@ int main (int argc, char **argv)
 	pname = argv[0];
 
 	
-        while ((c = getopt(argc, argv, "vk:H:")) != EOF) {
+        while ((c = getopt(argc, argv, "vk:H:r:")) != EOF) {
 		switch(c) {
 		case 'v':
 			
@@ -128,6 +129,10 @@ int main (int argc, char **argv)
 		  fprintf(stderr, "optarg = %s\n", optarg);
 		        count = atoi(optarg);
 		        break;
+		case 'r':
+			
+			rkfile = optarg;
+			break;
 		case '?':
 		default :
 			usage();
@@ -151,10 +156,10 @@ while (count--) {
 #endif
 	
 
-	if ((ret = sj3_rkinit(RKFILE))) {
+	if ((ret = sj3_rkinit(rkfile))) {
 		if (ret == 1)
 			fprintf(stderr, "Can't open Romaji Kana Rule file %s\n",
-					 RKFILE);
+					 rkfile);
 		else
 			fprintf(stderr, "Error sj3_rkinit\n");
 		exit (1);
