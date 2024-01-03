@@ -38,7 +38,9 @@
 
 
 #include <stdio.h>
+#include <string.h>
 #include <locale.h>
+#include <unistd.h>
 #include <pwd.h>
 #include "sj3lib.h"
 #include "wchar16.h"
@@ -82,8 +84,7 @@ int main (int argc, char **argv)
 	unsigned char kanji[BUFSIZ];		
 	char 	*uname, *loc;				
 	extern char *optarg;
-	char *rindex(), *getlogin();
-	struct passwd *getpwuid(), *pwd;
+	struct passwd *pwd;
         int count=1;
 
 	loc = setlocale(LC_CTYPE, "");
