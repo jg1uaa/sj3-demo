@@ -9,7 +9,7 @@ RKDIR = ../
 # path to libsj3lib.a
 LIBS = -L../
 
-CFLAGS = -O2 -Wall $(INCLUDES) -DORG
+CFLAGS = -O2 -Wall -Wno-pointer-sign $(INCLUDES) -DORG
 LDFLAGS = $(LIBS)
 
 TARGET = sample
