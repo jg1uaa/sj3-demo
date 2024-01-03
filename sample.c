@@ -59,13 +59,21 @@ char	*pname;
 char	*hname;		
 int	current_locale = LC_CTYPE_EUC;
 
+/* rk_conv.c */
+int sj3_rkinit(char *);
+int sj3_rkconv_mb(unsigned char *, unsigned char *);
+
+/* sj3_rkcv.c */
+int sj3_hantozen_mb(unsigned char *, unsigned char *);
+
+/* sample.c */
 void usage(void);
-void rkconvs(unsigned char *yomi, unsigned char *roma);
+void rkconvs(unsigned char *, unsigned char *);
 void print_head(void);
-void str_make(unsigned char *out_str, unsigned char *in_str, int len);
-void pr_douon(unsigned char *yomi);
-void pr_bunsetu(struct bunsetu *now_bun, int bunsetu_cnt);
-void pr_kanji(struct bunsetu *bun, int bnum);
+void str_make(unsigned char *, unsigned char *, int);
+void pr_douon(unsigned char *);
+void pr_bunsetu(struct bunsetu *, int);
+void pr_kanji(struct bunsetu *, int);
 
 void usage(void)
 {
