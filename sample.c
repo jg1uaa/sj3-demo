@@ -57,15 +57,21 @@ char	*pname;
 char	*hname;		
 int	current_locale = LC_CTYPE_EUC;
 
-usage()
+void usage(void);
+void rkconvs(unsigned char *yomi, unsigned char *roma);
+void print_head(void);
+void str_make(unsigned char *out_str, unsigned char *in_str, int len);
+void pr_douon(unsigned char *yomi);
+void pr_bunsetu(struct bunsetu *now_bun, int bunsetu_cnt);
+void pr_kanji(struct bunsetu *bun, int bnum);
+
+void usage(void)
 {
 	fprintf(stderr, "Usage: %s [-v] [-H hostname]\n", pname);
 	exit(1);
 }
 
-main (argc, argv)
-int argc;
-char **argv;
+int main (int argc, char **argv)
 {
 	register int c;
 	int	ret;				
@@ -217,9 +223,7 @@ while (count--) {
 #endif
 }
 
-rkconvs(yomi, roma)
-unsigned char *yomi;
-unsigned char *roma;
+void rkconvs(unsigned char *yomi, unsigned char *roma)
 {
 	register unsigned char *p, *q, *yp;
 	register int i;
@@ -299,7 +303,8 @@ unsigned char *roma;
 	sj3_hantozen_mb(yomi, tmp);
 }
 
-print_head() {
+void print_head(void)
+{
 	
 
 	fprintf(stdout, "\t*--------------------------------------------*\n");
@@ -314,10 +319,7 @@ print_head() {
 	fprintf(stdout, "\t*--------------------------------------------*\n");
 }
 
-str_make(out_str, in_str, len)
-unsigned char  *out_str;
-unsigned char  *in_str;
-int len;
+void str_make(unsigned char *out_str, unsigned char *in_str, int len)
 {
 	
 
@@ -326,8 +328,7 @@ int len;
 	*out_str = '\0';
 }
 
-pr_douon(yomi)
-unsigned char  *yomi;
+void pr_douon(unsigned char *yomi)
 {
 	register int i;
 	struct douon douon[BUFSIZ];	
@@ -350,9 +351,7 @@ unsigned char  *yomi;
 	}
 }
 
-pr_bunsetu(now_bun, bunsetu_cnt)
-struct bunsetu *now_bun;
-int	bunsetu_cnt;
+void pr_bunsetu(struct bunsetu *now_bun, int bunsetu_cnt)
 {
 	unsigned char   tmp_str[BUFSIZ];
 	unsigned char  *yomi;		
@@ -375,9 +374,7 @@ int	bunsetu_cnt;
 	fprintf(stdout, "\t\tdeststr:[%s]\n", tmp_str);
 }
 
-pr_kanji(bun, bnum)
-struct bunsetu *bun;
-int   bnum;
+void pr_kanji(struct bunsetu *bun, int bnum)
 {
 	register int i;
 
