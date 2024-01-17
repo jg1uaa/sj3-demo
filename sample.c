@@ -96,7 +96,11 @@ int main (int argc, char **argv)
 	struct passwd *pwd;
         int count=1;
 
+#if defined(__NetBSD__)
+	loc = getenv("LANG");
+#else
 	loc = setlocale(LC_CTYPE, "");
+#endif
 
 	if (strcmp(loc, "ja_JP.SJIS") == 0) {
 		current_locale = LC_CTYPE_SHIFTJIS;
